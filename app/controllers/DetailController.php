@@ -56,4 +56,19 @@ class DetailController extends BaseController {
 		$details			= $village->details;		
 		return View::make('villageDetails',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'rates'=>$rates,'details'=>$details));		
 	}
+	public function updateDetail($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId)
+	{
+		$district 			= District::find($distId);
+		$subdiv 			= Subdiv::find($subdivId);
+		$circle				= Circle::find($circleId);
+		$mouza				= Mouza::find($mouzaId);
+		$lot				= Lot ::find($lotId);	
+		$village			= Village::find($villageId);
+		$detail				= Detail::find($detailId);
+		$detail->sl			= Input::get('dsl');
+		$detail->save();
+		$rates				= $village->rates;
+		$details			= $village->details;		
+		return View::make('villageDetails',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'rates'=>$rates,'details'=>$details));		
+	}
 }

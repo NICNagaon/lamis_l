@@ -108,6 +108,26 @@
 						</form>
 					</div>
 				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Edit Serial</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}" method="POST">
+							<div class="form-group">
+								<label for="dsl" class="col-sm-6 control-label">Serial No.</label>
+								<div class="col-sm-6">
+										<input type="number" class="form-control" id="dsl" name="dsl" placeholder="Serial No.">
+									</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-6">
+									<button type="submit" class="btn btn-primary btn-block" tabindex="5">UPDATE</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 				<div class="row">
 					<form method="POST" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}/delete">
 						<div class="form-group">
