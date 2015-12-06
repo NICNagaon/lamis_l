@@ -39,7 +39,28 @@ class AwardController extends BaseController {
 		$awards				= $detail->awards;		
 		return View::make('detail',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'awards'=>$awards,'pattadars'=>$pattadars));		
 	}
-	
+	/*public function insertAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardSl)
+	{
+		$district 			= District::find($distId);
+		$subdiv 			= Subdiv::find($subdivId);
+		$circle				= Circle::find($circleId);
+		$mouza				= Mouza::find($mouzaId);
+		$lot				= Lot ::find($lotId);	
+		$village			= Village::find($villageId);
+		$detail				= Detail::find($detailId);
+		$awards 			= $village->awards->where('sl','>',$awardSl);
+		foreach($awards as $a)
+		{
+			$a->sl = a->sl+1;
+			$a->save();
+		}
+		$award				= new Award;
+		$award->sl			= $awardSl;		
+		$detail->awards()->save($award);
+		$pattadars			= $detail->pattadars;
+		$awards				= $detail->awards;		
+		return View::make('detail',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'awards'=>$awards,'pattadars'=>$pattadars));		
+	}*/
 	public function updateAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardId)
 	{
 		$district 			= District::find($distId);
@@ -125,6 +146,8 @@ class AwardController extends BaseController {
 		}
 		
 	}
+	
+	
 	public function deleteAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardId)
 	{
 		$district 	= District::find($distId);
@@ -137,6 +160,12 @@ class AwardController extends BaseController {
 		$award		= Award::find($awardId);
 		if(Input::get('pin')==Property::find(1)->pin)
 		{
+			/*$awards = $village->awards->where('sl','>',$award->sl);
+			foreach($awards as $a)
+			{
+				$a->sl = a->sl-1;
+				$a->save();
+			}*/
 			$award->delete();
 		}
 		$pattadars			= $detail->pattadars;

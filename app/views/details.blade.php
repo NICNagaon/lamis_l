@@ -31,9 +31,10 @@
 			<thead>
 				<tr>
 					<th colspan="22">
-						Details Report of Land Aquisition under SCHEME_NAME_HERE<br/>
-						in {{{$district->name}}} District {{{$subdiv->name}}} Sub-Division {{{$circle->name}}} Revenue Circle {{{$mouza->name}}} Mouza {{{$village->name}}}<br/>
-						with L.A. Case No. {{{$village->la_case}}}
+						Details Report of Land Aquisition under {{{$scheme}}}<br/>
+						in District: {{{$district->name}}}  Sub-Division: {{{$subdiv->name}}} Revenue Circle: {{{$circle->name}}} Mouza: {{{$mouza->name}}} Village:{{{$village->name}}}<br/>
+						with L.A. Case No. {{{$village->la_case}}}<br/>
+						Chainage From {{{$village->chainage_from}}} - Chainage To {{{$village->chainage_to}}}
 					</th>
 				</tr>
 				<tr>
@@ -55,7 +56,7 @@
 					<th rowspan="2">Solatium @ 100%</th>
 					<th rowspan="2">Additional <br/>market value <br/>of land <br/>@ 12%</th>
 					<th rowspan="2">Total</th>
-					<th rowspan="2">Revenue of 25 years</th>
+					<th rowspan="2">Revenue <br/>of <br/>25 years</th>
 					<th rowspan="2">Remarks</th>
 				</tr>
 				<tr>
@@ -121,41 +122,43 @@
 					$rev_25T=0;
 					/*--}}
 				@foreach ($village->details as $detail)
-					{{--*/$k=1;/*--}}
+					{{--*/$k=1;//$rowspn=$detail->awards->count()+DB::table('awards')->select(DB::raw('distinct daag,patta_type,patta_no'))->where('detail_id', '=', $detail->id)->count();
+						$rowspn=$detail->awards->count();
+					/*--}}
 					@foreach ($detail->awards as $award)
 					@if($daag!=$award->daag && $daag!=0)
 					
 						<tr class="total">
 							<td style="text-align:right;" colspan="4">Total of Daag</td>
-							<td>{{{$daag}}}</td>
-							<td></td>
-							<td></td>
+							<td style="text-align:right;">{{{$daag}}}</td>
+							<td style="text-align:right;"></td>
+							<td style="text-align:right;"></td>
 							<td style="text-align:right;">{{{$bigha}}}</td>
 							<td style="text-align:right;">{{{$katha}}}</td>
-							<td style="text-align:right;">{{{$lecha}}}</td>						
+							<td style="text-align:right;">{{{round($lecha,2,PHP_ROUND_HALF_UP)}}}</td>						
 							<td style="text-align:right;"></td>												
-							<td style="text-align:right;">{{{$land_value}}}</td>
-							<td style="text-align:right;">{{{$baad}}}</td>
-							<td style="text-align:right;">{{{$factored_value}}}</td>
-							<td style="text-align:right;">{{{$zirat}}}</td>
-							<td style="text-align:right;">{{{$building_value}}}</td>
-							<td style="text-align:right;">{{{$total}}}</td>
-							<td style="text-align:right;">{{{$solatium}}}</td>
-							<td style="text-align:right;">{{{$additional_market_value}}}</td>
-							<td style="text-align:right;">{{{$grand_total}}}</td>
-							<td style="text-align:right;">{{{$rev_25}}}</td>
+							<td style="text-align:right;">{{{round($land_value,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($baad,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($factored_value,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($zirat,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($building_value,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($total,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($solatium,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($additional_market_value,2,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($grand_total,0,PHP_ROUND_HALF_UP)}}}</td>
+							<td style="text-align:right;">{{{round($rev_25,2,PHP_ROUND_HALF_UP)}}}</td>
 							<td></td>
 						</tr>
 					{{--*/$bigha=0;$katha=0;$lecha=0;$baad=0;$land_value=0;$factored_value=0;$zirat=0;$building_value=0;$total=0;$solatium=0;$additional_market_value=0;$grand_total=0;$rev_25=0;/*--}}
 					@endif
 					<tr>
 						@if ($k==1)
-						<td rowspan="{{{$detail->awards->count()}}}"  style="text-align:center;">
+						<td rowspan="{{{$rowspn}}}"  style="text-align:center;">
 							
 							{{{$detail->sl}}}
 						</td>
 						
-						<td rowspan="{{{$detail->awards->count()}}}">
+						<td rowspan="{{{$rowspn}}}">
 							
 							@foreach ($detail->pattadars as $pattadar)
 								{{{$pattadar->sl}}}){{{$pattadar->name}}} {{{$pattadar->relation}}} {{{$pattadar->gurdian}}}<br/>
@@ -272,18 +275,18 @@
 					<td style="text-align:right;"></td>
 					<td style="text-align:right;">{{{$bigha}}}</td>
 					<td style="text-align:right;">{{{$katha}}}</td>
-					<td style="text-align:right;">{{{$lecha}}}</td>						
+					<td style="text-align:right;">{{{round($lecha,2,PHP_ROUND_HALF_UP)}}}</td>						
 					<td style="text-align:right;"></td>												
-					<td style="text-align:right;">{{{$land_value}}}</td>
-					<td style="text-align:right;">{{{$baad}}}</td>
-					<td style="text-align:right;">{{{$factored_value}}}</td>
-					<td style="text-align:right;">{{{$zirat}}}</td>
-					<td style="text-align:right;">{{{$building_value}}}</td>
-					<td style="text-align:right;">{{{$total}}}</td>
-					<td style="text-align:right;">{{{$solatium}}}</td>
-					<td style="text-align:right;">{{{$additional_market_value}}}</td>
-					<td style="text-align:right;">{{{$grand_total}}}</td>
-					<td style="text-align:right;">{{{$rev_25}}}</td>
+					<td style="text-align:right;">{{{round($land_value,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($baad,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($factored_value,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($zirat,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($building_value,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($total,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($solatium,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($additional_market_value,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($grand_total,0,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($rev_25,2,PHP_ROUND_HALF_UP)}}}</td>
 					<td></td>
 				</tr>
 				<tr class="total">
@@ -293,18 +296,18 @@
 					<td style="text-align:right;"></td>
 					<td style="text-align:right;">{{{$bighaT}}}</td>
 					<td style="text-align:right;">{{{$kathaT}}}</td>
-					<td style="text-align:right;">{{{$lechaT}}}</td>						
+					<td style="text-align:right;">{{{round($lechaT,2,PHP_ROUND_HALF_UP)}}}</td>						
 					<td style="text-align:right;"></td>												
-					<td style="text-align:right;">{{{$land_valueT}}}</td>
-					<td style="text-align:right;">{{{$baadT}}}</td>
-					<td style="text-align:right;">{{{$factored_valueT}}}</td>
-					<td style="text-align:right;">{{{$ziratT}}}</td>
-					<td style="text-align:right;">{{{$building_valueT}}}</td>
-					<td style="text-align:right;">{{{$totalT}}}</td>
-					<td style="text-align:right;">{{{$solatiumT}}}</td>
-					<td style="text-align:right;">{{{$additional_market_valueT}}}</td>
-					<td style="text-align:right;">{{{$grand_totalT}}}</td>
-					<td style="text-align:right;">{{{$rev_25T}}}</td>
+					<td style="text-align:right;">{{{round($land_valueT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($baadT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($factored_valueT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($ziratT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($building_valueT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($totalT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($solatiumT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($additional_market_valueT,2,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($grand_totalT,0,PHP_ROUND_HALF_UP)}}}</td>
+					<td style="text-align:right;">{{{round($rev_25T,2,PHP_ROUND_HALF_UP)}}}</td>
 					<td></td>
 				</tr>
 			</tbody>

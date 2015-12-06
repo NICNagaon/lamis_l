@@ -48,6 +48,46 @@ class VillageController extends BaseController {
 		$village				= Village::find($villageId);
 		$village->name 			= Input::get('name');
 		$village->name_local 	= Input::get('nameLocal');
+		if($village->factor!=Input::get('factor'))
+		{
+			$awards				= $village->awards;
+			foreach($awards as $award)
+			{
+				$value_wo_baad		= $award->land_value-$award->baad;
+				$award->factored_value	= $village->factor *$value_wo_baad;
+				$award->total		= $award->zirat+$award->factored_value+$award->building_value;
+				$award->solatium	= $award->total;
+				$award->additional_market_value = .12*$value_wo_baad;
+				$award->grand_total	= $award->total+$award->solatium+$award->additional_market_value;
+				if($award->grand_total<=500000)
+				{
+					$award->establishment 	= .18*$award->grand_total;
+					$award->contingency		= .07*$award->grand_total;
+				}
+				else if($award->grand_total<=1500000)
+				{
+					$award->establishment 	= .15*$award->grand_total;
+					$award->contingency		= .05*$award->grand_total;
+				}
+				else if($award->grand_total<=5000000)
+				{
+					$award->establishment 	= .12*$award->grand_total;
+					$award->contingency		= .03*$award->grand_total;
+				}
+				else if($award->grand_total<=10000000)
+				{
+					$award->establishment 	= .08*$award->grand_total;
+					$award->contingency		= .02*$award->grand_total;
+				}
+				else 
+				{
+					$award->establishment 	= .05*$award->grand_total;
+					$award->contingency		= .01*$award->grand_total;
+				}
+				$award->save();
+			}
+			$village->factor		= Input::get('factor');
+		}
 		$village->la_case		= Input::get('lacase');
 		$village->chainage_from	= Input::get('cFrom');
 		$village->chainage_to	= Input::get('cTo');

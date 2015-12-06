@@ -65,3 +65,6 @@ Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{m
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}/posessors/{posessorId}/delete', 'PosessorController@deletePosessor');
 
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/detailsReport', 'ReportController@showDetails');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/estimateReport', 'ReportController@showEstimate');
+
+Route::get('/{number}/words','ReportController@convert_number_to_words');

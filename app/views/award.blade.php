@@ -131,9 +131,11 @@
 								<select class="form-control" id="pattaType" name="pattaType" tabindex="6">
 									<option value='PP'  @if ($award->patta_type=='PP') selected @endif >PP</option>
 									<option value='AP'  @if ($award->patta_type=='AP') selected @endif >AP</option>
-									<option value='Govt'  @if ($award->patta_type=='Govt') selected @endif >Govt</option>
+									<option value='GL'  @if ($award->patta_type=='GL') selected @endif >GL</option>
+									<option value='FS'  @if ($award->patta_type=='FS') selected @endif >FS</option>
 									<option value='BBP'  @if ($award->patta_type=='BBP') selected @endif >BBP</option>
 									<option value='NK'  @if ($award->patta_type=='BBP') selected @endif >NK</option>
+									<option value='Lakheraj'  @if ($award->patta_type=='BBP') selected @endif >Lakheraj</option>
 								</select>
 							</div>
 						</div>
