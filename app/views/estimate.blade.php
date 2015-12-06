@@ -201,7 +201,7 @@
 			<br/>
 			<br/>
 			<br/>
-			Secretary to the Govt. of Assam<br/><br/><br/>.............................. Department
+			<div style='text-align:center;'>General Manager (Project)<br/>National Highway and Infrastructure Development Corporation Ltd.</div>
 		</div>
 		<div id="forwarding" class="newPage">
 			<h2 align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'>
