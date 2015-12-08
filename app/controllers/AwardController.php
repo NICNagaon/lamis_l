@@ -39,7 +39,7 @@ class AwardController extends BaseController {
 		$awards				= $detail->awards;		
 		return View::make('detail',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'awards'=>$awards,'pattadars'=>$pattadars));		
 	}
-	/*public function insertAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardSl)
+	public function insertAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId)
 	{
 		$district 			= District::find($distId);
 		$subdiv 			= Subdiv::find($subdivId);
@@ -48,19 +48,15 @@ class AwardController extends BaseController {
 		$lot				= Lot ::find($lotId);	
 		$village			= Village::find($villageId);
 		$detail				= Detail::find($detailId);
-		$awards 			= $village->awards->where('sl','>',$awardSl);
-		foreach($awards as $a)
-		{
-			$a->sl = a->sl+1;
-			$a->save();
-		}
+		DB::statement("UPDATE awards SET sl=sl+1 WHERE detail_id in (select id from details where village_id=".$villageId." and sl>=".$detail->sl.") and sl>=".Input::get('isl'));	
 		$award				= new Award;
-		$award->sl			= $awardSl;		
+		$award->sl			= Input::get('isl');		
 		$detail->awards()->save($award);
 		$pattadars			= $detail->pattadars;
 		$awards				= $detail->awards;		
 		return View::make('detail',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'awards'=>$awards,'pattadars'=>$pattadars));		
-	}*/
+	}
+	
 	public function updateAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardId)
 	{
 		$district 			= District::find($distId);
@@ -160,12 +156,7 @@ class AwardController extends BaseController {
 		$award		= Award::find($awardId);
 		if(Input::get('pin')==Property::find(1)->pin)
 		{
-			/*$awards = $village->awards->where('sl','>',$award->sl);
-			foreach($awards as $a)
-			{
-				$a->sl = a->sl-1;
-				$a->save();
-			}*/
+			DB::statement("UPDATE awards SET sl=sl-1 WHERE detail_id in (select id from details where village_id=".$villageId." and sl>=".$detail->sl.") and sl>".Input::get('sl'));
 			$award->delete();
 		}
 		$pattadars			= $detail->pattadars;

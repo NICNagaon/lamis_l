@@ -43,11 +43,15 @@ Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mo
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}', 'VillageController@updateVillage');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/delete', 'VillageController@deleteVillage');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/rates', 'VillageController@saveRate');
+Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/rates/{rateId}', 'VillageController@updateRate');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/rates/{rateId}', 'VillageController@showRate');
 
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details', 'DetailController@saveDetail');
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}', 'DetailController@showDetail');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}', 'DetailController@updateDetail');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/delete', 'DetailController@deleteDetail');
+Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/split', 'DetailController@splitDetail');
+Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/merge', 'DetailController@mergeDetail');
 
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/pattadars/{pattadarId}', 'PattadarController@showPattadar');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/pattadars', 'PattadarController@savePattadar');
@@ -58,6 +62,7 @@ Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{m
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}', 'AwardController@showAward');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}', 'AwardController@updateAward');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}/delete', 'AwardController@deleteAward');
+Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/award/insert', 'AwardController@insertAward');
 
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}/posessors/{posessorId}', 'PosessorController@showPosessor');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}/posessors', 'PosessorController@savePosessor');

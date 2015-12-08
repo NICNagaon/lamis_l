@@ -194,14 +194,14 @@
 			Divisional Commissioner<br/><br/>Countersigned By:<br/><br/><br/><br/><br/>Secretary to the Govt. of Assam<br/>Revenue& D.M. Department</div>
 			<div style="clear:both;"></div>
 			<br/>
-			Sancrioned by:
+			Sanctioned by:
 			<br/>
 			<br/>
 			<br/>
 			<br/>
 			<br/>
 			<br/>
-			<div style='text-align:center;'>General Manager (Project)<br/>National Highway and Infrastructure Development Corporation Ltd.</div>
+			<div style='text-align:left;'>General Manager (Project)<br/>National Highway and Infrastructure Development Corporation Ltd.</div>
 		</div>
 		<div id="forwarding" class="newPage">
 			<h2 align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'>
@@ -289,32 +289,28 @@
 			<p style='margin:0cm;margin-bottom:.0001pt' class="newPage">Enclosed: </p>
 
 			<p style='margin:0cm;margin-bottom:.0001pt'>&nbsp;</p>
-			
-			<br/>1. Jamabandi
-			1 (one) copy. 
+			<ol>
+				<li>Jamabandi  </li>
 
-			<br/>2. Chitha 1
-			(one) copy. 
+				<li> Chitha </li>
 
-			<br/>3. Estimate
-			2 (two) copies. 
+				<li> Estimate </li>
 
-			<br/>4. Details
-			estimate 1 (one) copy.
+				
 
-			<br/>5. Details
-			estimate English (one) copy. 
+				<li> Details
+				statement English </li>
 
-			<br/>6.
-			Certificate P.P. Rule 2 (two) copies. 
+				<li>
+				Certificate P.P. Rule  </li>
 
-			<br/>7. Ceiling free Certificate 2 (two) copies. 
+				<li> Ceiling free Certificate </li>
 
-			<br/>8.	Certificate about fixation of value of land/Zirat/House.
-
+				<li>	Certificate about fixation of value of land/Zirat/House.</li>
+			</ol>
 			<p style='margin:0cm;margin-bottom:.0001pt'>&nbsp;</p>
 
-			<p style='margin:0cm;margin-bottom:.0001pt'>Memo No. NRQ (N.H.)        -A                                                                  
+			<p style='margin:0cm;margin-bottom:.0001pt'>Memo No. NRQ (N.H.)                                                                         
 			Date:  </p>
 
 			<p style='margin:0cm;margin-bottom:.0001pt'>&nbsp;</p>
@@ -322,16 +318,16 @@
 			<p style='margin:0cm;margin-bottom:.0001pt'>Copy to : - </p>
 
 			
-
-			<p>1. The Principal Secretary to the Govt. of Assam, Land Revenue
+			<ol>
+			<li> The Principal Secretary to the Govt. of Assam, Land Revenue
 			Department,Dispur (Enclosed Jamabandi one copy, Chitha one copy, Estimate one
-			copy,Details statement one copy for information and kind necessary action.)</p>
+			copy,Details statement one copy for information and kind necessary action.)</li>
 
-			<p>2. The Commissioner, North Assam Division, Tezpur for information and kind
-			necessary action. </p>
+			<li>The Commissioner, North Assam Division, Tezpur for information and kind
+			necessary action. </li>
 
-			<p>3. Director of Land Acquisition of Govt. of Assam, Guwahati for information.</p>
-
+			<li>Director of Land Acquisition of Govt. of Assam, Guwahati for information.</li>
+			</ol>
 			<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
 
 			<p class=MsoListParagraphCxSpMiddle>&nbsp;</p>
@@ -400,14 +396,7 @@
 			<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
 			margin-left:252.0pt;margin-bottom:.0001pt'>Nagaon</p>
 
-			<hr/>
-
-			<p class=MsoNormal style='margin-left:252.0pt'>&nbsp;</p>
-
-			<p class=MsoNormal style='margin-left:252.0pt'>&nbsp;</p>
-
-			<p class=MsoNormal>&nbsp;</p>
-
+			
 		</div>
 		<div id="PPCertificate" class="newPage" style="font-size:1.3em;">
 			<p class=MsoNormal align=center style='text-align:center'>
@@ -418,9 +407,8 @@
 
 			<p class=MsoNormal><u><span style='text-decoration:none'> </span></u></p>
 
-			<p class=MsoNormal>Certificate as required under Assam Land Acquisition (Public
-			Purpose procedural Rule 1964) in respect of acquisition of land for
-			construction of {{{$scheme}}} including Nagaon/Doboka/Lanka Bypass
+			<p class=MsoNormal>Certificate as required under Land Acquisition, Rehabilitation and Resettlement Act, 2013 in respect of acquisition of land for
+			construction of {{{$scheme}}} including Nagaon/Samaguri/Koliabor
 			in respect of L.A. Case no. - {{{$village->la_case}}} covering an area  {{{$area['b']}}} Bigha, {{{$area['k']}}} Katha,{{{$area['l']}}} Lessa
 			of Village {{{$village->name}}}, Mouza {{{$mouza->name}}},Circle {{{$circle->name}}}, District {{{$district->name}}} (Assam).</p>
 
@@ -448,7 +436,7 @@
 			<p class=MsoNormal>&nbsp;</p>
 
 			<p class=MsoNormal>It is also certified that the schedule of land as described
-			in this Notification u/s 3A of N.H. Act 1956 agrees into.</p>
+			in this Notification u/s 3A of Land Acquisition, Rehabilitation and Resettlement Act, 2013 agrees into.</p>
 
 			<p class=MsoNormal>&nbsp;</p>
 

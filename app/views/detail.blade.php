@@ -73,6 +73,7 @@
 											<option value='S/o'>Son Of</option>
 											<option value='D/o'>Daughter Of</option>
 											<option value='W/o'>Wife Of</option>
+											<option value='M/o'>Mother Of</option>
 											 
 										</select>
 									</div>
@@ -110,6 +111,26 @@
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
+						<h3 class="panel-title">Insert Award</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}/award/insert" method="POST">
+							<div class="form-group">
+								<label for="isl" class="col-sm-6 control-label">Serial No.</label>
+								<div class="col-sm-6">
+										<input type="number" class="form-control" id="isl" name="isl" placeholder="Serial No.">
+									</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-6">
+									<button type="submit" class="btn btn-primary btn-block" tabindex="5">INSERT AWARD</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
 						<h3 class="panel-title">Edit Serial</h3>
 					</div>
 					<div class="panel-body">
@@ -123,6 +144,46 @@
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-6">
 									<button type="submit" class="btn btn-primary btn-block" tabindex="5">UPDATE</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Split Detail</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}/split" method="POST">
+							<div class="form-group">
+								<label for="fromSl" class="col-sm-6 control-label">From Award Serial No.</label>
+								<div class="col-sm-6">
+									<input type="number" class="form-control" id="fromSl" name="fromSl" placeholder="From Award Serial">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-6">
+									<button type="submit" class="btn btn-primary btn-block" tabindex="5">SPLIT</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Merge Detail With Previous</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}/merge" method="POST">
+							<div class="form-group">
+								<label for="fromSl" class="col-sm-6 control-label">Upto Award Serial No.</label>
+								<div class="col-sm-6">
+									<input type="number" class="form-control" id="toSl" name="toSl" placeholder="Upto Award Serial">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-6">
+									<button type="submit" class="btn btn-primary btn-block" tabindex="5">MERGE</button>
 								</div>
 							</div>
 						</form>

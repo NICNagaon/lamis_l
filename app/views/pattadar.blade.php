@@ -51,7 +51,9 @@
 											<option value='W/o' @if ($pattadar->relation=='W/o') selected @endif >
 												Wife Of
 											</option>
-											 
+											<option value='M/o' @if ($pattadar->relation=='M/o') selected @endif >
+												Mother Of
+											</option> 
 										</select>
 									</div>
 								</div>

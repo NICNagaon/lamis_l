@@ -25,13 +25,13 @@ class Village extends Eloquent {
 	
 	public function details()
     {
-        return $this->hasMany('Detail')->orderBy('id');
+        return $this->hasMany('Detail')->orderBy('sl');
 		//->orderBy('id')->get()
     }
 	
 	public function awards()
     {
-        return $this->hasManyThrough('Award', 'Detail')->orderBy('detail_id')->orderBy('id');
+        return $this->hasManyThrough('Award', 'Detail')->orderBy('sl');
     }
 
 }

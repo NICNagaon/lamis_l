@@ -18,11 +18,17 @@
 			
 			border: 1px solid black;
 		}
-		tr {
-			page-break-inside: avoid;
-		}
-		tr.total {
-			page-break-before: avoid;
+		
+		@media print {
+			thead {
+			   display: table-header-group;
+			}
+			tr {
+				page-break-inside: avoid;
+			}
+			tr.total {
+				page-break-before: avoid;
+			}
 		}
 		</style>
 	</head>
@@ -161,7 +167,7 @@
 						<td rowspan="{{{$rowspn}}}">
 							
 							@foreach ($detail->pattadars as $pattadar)
-								{{{$pattadar->sl}}}){{{$pattadar->name}}} {{{$pattadar->relation}}} {{{$pattadar->gurdian}}}<br/>
+								{{{$pattadar->sl}}}){{{$pattadar->name}}} @if ($pattadar->gurdian != null && $pattadar->gurdian!=" ") {{{$pattadar->relation}}} {{{$pattadar->gurdian}}} @endif<br/>
 								
 							@endforeach
 						</td>
@@ -170,7 +176,7 @@
 						<td>
 							
 							@foreach ($award->posessors as $posessor)
-								{{{$posessor->sl}}}){{{$posessor->name}}} {{{$posessor->relation}}} {{{$posessor->gurdian}}} @if ($posessor->pattadar_sl != null || $posessor->pattadar_sl>0) ({{{$posessor->pattadar_sl}}}) @endif<br/>
+								{{{$posessor->sl}}}){{{$posessor->name}}} @if ($posessor->gurdian != null && $posessor->gurdian!=" ") {{{$posessor->relation}}} {{{$posessor->gurdian}}} @endif @if ($posessor->pattadar_sl != null && $posessor->pattadar_sl>0) ({{{$posessor->pattadar_sl}}}) @endif<br/>
 								
 							@endforeach
 						</td>
