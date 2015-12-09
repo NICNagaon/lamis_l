@@ -80,7 +80,7 @@ class AwardController extends BaseController {
 		$award->rev_25		= Input::get('revenue');
 		$award->building_value	= Input::get('building');
 		$award->remarks		= Input::get('remarks');
-		$award->disputed	= Input::get('disputed');
+		$award->disputed	= (Input::get('disputed')=='on');
 		$award->rate		= Rate::where('village_id','=',$villageId)->where('name','=',Input::get('landClass'))->firstOrFail()->bigha;
 		$award->land_value	= ($award->bigha + ($award->katha/5) + ($award->lecha/100))*$award->rate;
 		$value_wo_baad		= $award->land_value-$award->baad;
@@ -156,7 +156,7 @@ class AwardController extends BaseController {
 		$award		= Award::find($awardId);
 		if(Input::get('pin')==Property::find(1)->pin)
 		{
-			DB::statement("UPDATE awards SET sl=sl-1 WHERE detail_id in (select id from details where village_id=".$villageId." and sl>=".$detail->sl.") and sl>".Input::get('sl'));
+			DB::statement("UPDATE awards SET sl=sl-1 WHERE detail_id in (select id from details where village_id=".$villageId." and sl>=".$detail->sl.") and sl>".$award->sl);
 			$award->delete();
 		}
 		$pattadars			= $detail->pattadars;

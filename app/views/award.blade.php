@@ -199,6 +199,14 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="dremarks" class="col-sm-4 control-label">Draft Remarks</label>
+							<div class="col-sm-8">
+								<textarea  class="form-control" id="dremarks" name="dremarks" placeholder="Draft Remarks" tabindex="16" rows="3" value="{{{$award->draft_remark}}}"> 
+								</textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
 							<div class="col-sm-offset-4 col-sm-8">
 								<div class="checkbox">
 									<label>

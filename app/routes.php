@@ -71,5 +71,7 @@ Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{m
 
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/detailsReport', 'ReportController@showDetails');
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/estimateReport', 'ReportController@showEstimate');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/draftAward', 'ReportController@showDraftAward');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/finalAward', 'ReportController@showFinalAward');
 
 Route::get('/{number}/words','ReportController@convert_number_to_words');

@@ -295,8 +295,8 @@
 					<td style="text-align:right;">{{{round($rev_25,2,PHP_ROUND_HALF_UP)}}}</td>
 					<td></td>
 				</tr>
-				<tr class="total">
-					<td style="text-align:right;" colspan="4">Total </td>
+				<tr class="total" style="font-weight: bold;">
+					<td style="text-align:right;" colspan="4">Grand Total </td>
 					<td style="text-align:right;"></td>
 					<td style="text-align:right;"></td>
 					<td style="text-align:right;"></td>

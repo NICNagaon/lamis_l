@@ -162,6 +162,15 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<div class="col-sm-offset-4 col-sm-8">
+									<div class="checkbox">
+										<label>
+										  <input type="checkbox" id="incPat" name="incPat"   > Copy Pattadars
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-6">
 									<button type="submit" class="btn btn-primary btn-block" tabindex="5">SPLIT</button>
 								</div>

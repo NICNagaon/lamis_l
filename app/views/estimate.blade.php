@@ -31,7 +31,7 @@
 		</style>
 	</head>
 	<body>
-		<div id="estimate">
+		<div id="estimate" style="font-size:.9em;">
 			<div style="width:100%;text-align: center;"><b><u>Form - VII</u><br/>[See Rule 24]</b><br/><br/><u>Estimate of preliminary cost of land acquisition under Act 30 of 2013</u></div>
 			<div style="width:100%;text-align: justify;text-justify: inter-word;">
 				Name of Requiring Body : National Highway and Infrastructure Development Corporation Ltd. requiring the land {{{$area['b']}}} Bigha {{{$area['k']}}} Katha
@@ -54,6 +54,7 @@
 					<td style="text-align: center;">Amount<br/>in Rs.</td>
 				</tr>
 				@foreach ($lands as $land)
+				@if(!($land['area']['b']==0 && $land['area']['k']==0 && $land['area']['l']==0 ))
 				<tr>
 					<td></td>
 					<td></td>
@@ -62,6 +63,7 @@
 					<td style="text-align: right;">{{{$land['rate']}}}</td>
 					<td style="text-align: right;">{{{$land['value']}}}</td>
 				</tr>
+				@endif
 				@endforeach
 				<tr>
 					<td></td>
@@ -250,24 +252,23 @@
 
 			<p style='margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:
 			inter-ideograph;text-indent:36.0pt'>With reference to the subject cited above.
-			I have the honor to send herewith Land Acquisition estimate of Rs.{{{$final_total}}} (Rupeese {{{$final_total_words['rupees']}}} Only)
-			in duplicate along with other connected papers for acquisition of {{{$area['b']}}} Bigha, {{{$area['k']}}} Katha,{{{$area['l']}}} Lessa patta
+			I have the honor to send herewith 3G Estimate of Rs.{{{$final_total}}} (Rupeese {{{$final_total_words['rupees']}}} Only)
+			along with other connected papers for acquisition of {{{$area['b']}}} Bigha, {{{$area['k']}}} Katha,{{{$area['l']}}} Lessa patta
 			land of Village {{{$village->name}}}, Mouza {{{$mouza->name}}},Circle {{{$circle->name}}}, District {{{$district->name}}} (Assam) under L.A. case No.- {{{$village->la_case}}}.</p>
 
-			<p style='margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:
+			<!--<p style='margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:
 			inter-ideograph;text-indent:36.0pt'>You are requested to take necessary steps
 			for sanction of estimated amount and its placement with this office so as to
 			meet the cost of acquired land to the affected pattaders. It may be submitted  <br>
 			that above amount does not include the compensation as envisaged in Sub -
 			section 7 (d) of section 3 G of N.H. Act 2013 regarding which further guidance
-			from your end is required.</p>
+			from your end is required.</p>-->
 
 			<p style='margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:
 			inter-ideograph'>&nbsp;</p>
 
 			<p style='margin:0cm;margin-bottom:.0001pt;text-align:justify;text-justify:
-			inter-ideograph;text-indent:36.0pt'>This has the approval of the Deputy
-			Commissioner, Nagaon.</p>
+			inter-ideograph;text-indent:36.0pt'>This is for your information and necessary action.</p>
 
 			<p class=MsoNormal align=right style='text-align:right'>&nbsp;</p>
 

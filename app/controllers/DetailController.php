@@ -54,6 +54,21 @@ class DetailController extends BaseController {
 		DB::statement("UPDATE details SET sl=sl+1 WHERE village_id=".$villageId." and sl>".$currDetail->sl);
 		$village->details()->save($newDetail);
 		DB::statement("UPDATE awards SET detail_id=".$newDetail->id." WHERE detail_id=".$currDetail->id." and sl>=".Input::get('fromSl'));
+		
+		if(Input::get('incPat')=='on')
+		{
+			$owners = $currDetail->pattadars;
+			foreach($owners as $owner)
+			{
+				$pattadar = new Pattadar;
+				$pattadar->name=$owner->name;
+				$pattadar->sl = $owner->sl;
+				$pattadar->relation = $owner->relation;
+				$pattadar->gurdian=$owner->gurdian;
+				$newDetail->pattadars()->save($pattadar);
+
+			}
+		}
 		//$village->details()->save($detail);
 		$rates				= $village->rates;
 		$details			= $village->details;		

@@ -11,23 +11,31 @@ class ReportController extends BaseController {
 		$lot		= Lot::find($lotId);
 		$village	= Village::find($villageId);
 		$scheme		= Property::find(1)->scheme;
-		//$data		= array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village);
-		//$excel = App::make('excel');
-		//set_time_limit(3600000);
-		/*Excel::create('New file', function($excel) use ($data) {
-
-			$excel->sheet('New sheet', function($sheet) use ($data){
-
-				$sheet->loadView('details',$data);
-
-			});
-		})->export('xls');*/
-		
-
-
 		return View::make('details',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
 	}
 	
+	public function showDraftAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$scheme		= Property::find(1)->scheme;
+		return View::make('draft',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
+	}
+	public function showFinalAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$scheme		= Property::find(1)->scheme;
+		return View::make('final',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
+	}
 	public function showEstimate($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
 	{
 		$district 	= District::find($distId);
