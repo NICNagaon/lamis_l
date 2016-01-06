@@ -184,10 +184,16 @@
 					</div>
 					<div class="panel-body">
 						<form class="form-horizontal" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}/merge" method="POST">
-							<div class="form-group">
-								<label for="fromSl" class="col-sm-6 control-label">Upto Award Serial No.</label>
+							<!--<div class="form-group">
+								<label for="toDSl" class="col-sm-6 control-label">Upto Detail Serial No.</label>
 								<div class="col-sm-6">
-									<input type="number" class="form-control" id="toSl" name="toSl" placeholder="Upto Award Serial">
+									<input type="number" class="form-control" id="toDSl" name="toDSl" placeholder="Upto Detail Serial">
+								</div>
+							</div>-->
+							<div class="form-group">
+								<label for="toASl" class="col-sm-6 control-label">Upto Award Serial No.</label>
+								<div class="col-sm-6">
+									<input type="number" class="form-control" id="toASl" name="toSl" placeholder="Upto Award Serial">
 								</div>
 							</div>
 							<div class="form-group">

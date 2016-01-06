@@ -90,6 +90,62 @@
 			
 		</div>
 		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Bank Details</h3>
+					</div>
+					<div class="panel-body">
+						<div class="list-group">
+							<form class="form-horizontal" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}/awards/{{{$award->id}}}/bank" method="POST">
+								<div class="form-group">
+									<label for="relation" class="col-sm-6 control-label">Bank</label>
+									<div class="col-sm-6">
+										<select type="text" class="form-control" id="bank" name="bank">
+											<option value="-1">Select Bank</option>
+											@foreach ($banks as $bank)
+												<option value="{{{$bank->id}}}" @if ($award->branch_id!=0 && $bank->id == $award->branch->bank->id) selected @endif)>{{{$bank->name}}}</option>
+											@endforeach
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="relation" class="col-sm-6 control-label">Branch</label>
+									<div class="col-sm-6">
+										<select type="text" class="form-control" id="branch" name="branch">
+											<option value="-1">Select Branch</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="name" class="col-sm-6 control-label">Account No.</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="accno" name="accno" placeholder="Account No."  required value="{{{$award->acc_no}}}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="relation" class="col-sm-6 control-label">Account Holder</label>
+									<div class="col-sm-6">
+										<select type="text" class="form-control" id="holder" name="holder">
+											@foreach ($posessors as $posessor)
+												<option value="{{{$posessor->id}}}" @if ($posessor->id == $award->acc_holder) selected @endif)>{{{$posessor->name}}}</option>
+											@endforeach
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-6">
+										<button type="submit" class="btn btn-primary btn-block" tabindex="6">SUBMIT</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row">
 			<form method="POST" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/details/{{{$detail->id}}}/awards/{{{$award->id}}}/delete">
 				<div class="form-group">
 					
@@ -233,4 +289,26 @@
 	</div>
 	
 </div> 
+<script>
+$(document).ready(function(){
+	$( "#bank" ).change(function() {
+		$.getJSON( "/banks/"+$( "#bank" ).val()+"/branches" )
+		.done(function( json ) {
+			var html = "";
+			for(var i =0;i<json.length;i++)
+			{
+				var selected="";
+				if(json[i].id=={{{$award->branch_id}}})
+					selected="selected";
+				html = html+"<option value=\""+json[i].id+"\" "+selected+">"+json[i].name+"</option>";
+			}
+			$("#branch").html(html);
+		})
+		.fail(function( jqxhr, textStatus, error ) {
+			var err = textStatus + ", " + error;
+			alert( "Request Failed: " + err );
+		});
+	});
+});
+</script>
 @stop

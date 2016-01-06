@@ -117,9 +117,13 @@
 					
 						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/detailsReport" class="list-group-item">Details Report</a>
 						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/estimateReport" class="list-group-item">Estimate Report</a>
+						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/draftfwd" class="list-group-item">Forwarding of Draft Award</a>
 						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/draftAward" class="list-group-item">Draft Award Report</a>
 						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/finalAward" class="list-group-item">Final Award Report</a>
-					
+						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/disputedAward" class="list-group-item">Final Disputed Award Report</a>
+						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/handoverReport" class="list-group-item">Handover Report</a>
+						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/apr" class="list-group-item">APR Report</a>
+						<a href="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/advApr" class="list-group-item">Advance APR Report</a>
 					</div>
 				</div>
 			</div>
@@ -173,6 +177,30 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Issue Cheques</h3>
+				</div>
+				<div class="panel-body">
+					<form class="form-horizontal" action="/districts/{{{$district->id}}}/subdivs/{{{$subdiv->id}}}/circles/{{{$circle->id}}}/mouzas/{{{$mouza->id}}}/lots/{{{$lot->id}}}/villages/{{{$village->id}}}/cheques" method="POST">
+						<div class="form-group">
+							<label for="cheque" class="col-sm-6 control-label">Starting Cheque No.</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="cheque" name="cheque" placeholder="Cheque No.">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-6">
+								<button type="submit" class="btn btn-primary btn-block" tabindex="5">Issue Cheques</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>				
+		</div>
+		
 	</div>
 	<!--
 	<div class="col-sm-4">

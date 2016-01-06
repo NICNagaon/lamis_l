@@ -41,10 +41,10 @@ class PosessorController extends BaseController {
 		$posessor->gurdian	= Input::get('gurdianName');
 		$posessor->pattadar_sl	= Input::get('pattadar_sl');
 		$award->posessors()->save($posessor);
-		
+		$banks				= Bank::all();
 		$posessors			= $detail->posessors;
 		
-		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null));		
+		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null,'banks'=>$banks));		
 	}
 	
 	public function updatePosessor($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardId,$posessorId)
@@ -64,10 +64,10 @@ class PosessorController extends BaseController {
 		$posessor->gurdian	= Input::get('gurdianName');
 		$posessor->pattadar_sl	= Input::get('pattadar_sl');
 		$posessor->save();
-		
+		$banks				= Bank::all();
 		$posessors			= $award->posessors;
 		
-		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null));		
+		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null,'banks'=>$banks));		
 	}
 	
 	public function deletePosessor($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardId,$posessorId)
@@ -84,9 +84,9 @@ class PosessorController extends BaseController {
 		$posessor			= Posessor::find($posessorId);
 		if(Input::get('pin')==Property::find(1)->pin)
 			$posessor->delete();
-		
+		$banks				= Bank::all();
 		$posessors			= $award->posessors;
 		//return $posessors->toArray();
-		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null));		
+		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null,'banks'=>$banks));		
 	}
 }

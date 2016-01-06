@@ -210,5 +210,43 @@ class VillageController extends BaseController {
 		return View::make('rate',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'rate'=>$rate));
 		//return $subdivs->toArray();
 	}
-	
+	 public function issueCheques($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	 {
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$awards		= $village->awards()->where('disputed','=',0)->get();
+		$startingC	= Input::get('cheque');
+		foreach($awards as $award)
+		{
+			$award->cheque = $startingC;
+			$startingC = $startingC+1;
+			$award->save();
+		}
+		if($village->dc_revenue_amt>0)
+		{
+			$village->dc_revenue_cheque = $startingC;
+			$startingC = $startingC+1;
+		}
+		if($village->dc_est_amt>0)
+		{
+			$village->dc_est_cheque = $startingC;
+			$startingC = $startingC+1;
+		}
+		if($village->dc_cont_amt>0)
+		{
+			$village->dc_cont_cheque = $startingC;
+			$startingC = $startingC+1;
+		}
+		if($village->dc_baad_amt>0)
+		{
+			$village->dc_baad_cheque = $startingC;
+			$startingC = $startingC+1;
+		}
+		$villages				= $lot->villages;
+		return View::make('village',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'villages'=>$villages));
+	 }
 }

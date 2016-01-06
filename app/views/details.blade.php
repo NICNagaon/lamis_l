@@ -40,7 +40,7 @@
 						Details Report of Land Aquisition under {{{$scheme}}}<br/>
 						in District: {{{$district->name}}}  Sub-Division: {{{$subdiv->name}}} Revenue Circle: {{{$circle->name}}} Mouza: {{{$mouza->name}}} Village:{{{$village->name}}}<br/>
 						with L.A. Case No. {{{$village->la_case}}}<br/>
-						Chainage From {{{$village->chainage_from}}} - Chainage To {{{$village->chainage_to}}}
+						Chainage From {{{$village->chainage_from}}} km - Chainage To {{{$village->chainage_to}}} km
 					</th>
 				</tr>
 				<tr>
@@ -191,8 +191,12 @@
 							$lecha = $lecha+$award->lecha;
 							if($lecha>=20)
 							{
-								$katha=$katha+floor($lecha/20);
-								$lecha = $lecha%20;
+								
+								while($lecha>=20)
+								{
+									$katha=$katha+1;
+									$lecha = $lecha-20;
+								}
 							}
 							$katha = $katha+$award->katha;
 							if($katha>=5)
@@ -205,8 +209,11 @@
 							$lechaT = $lechaT+$award->lecha;
 							if($lechaT>=20)
 							{
-								$kathaT=$kathaT+floor($lechaT/20);
-								$lechaT = $lechaT%20;
+								while($lechaT>=20)
+								{
+									$kathaT=$kathaT+1;
+									$lechaT = $lechaT-20;
+								}
 							}
 							$kathaT = $kathaT+$award->katha;
 							if($kathaT>=5)

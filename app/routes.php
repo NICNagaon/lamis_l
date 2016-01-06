@@ -45,6 +45,7 @@ Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{m
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/rates', 'VillageController@saveRate');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/rates/{rateId}', 'VillageController@updateRate');
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/rates/{rateId}', 'VillageController@showRate');
+Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/cheques', 'VillageController@issueCheques');
 
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details', 'DetailController@saveDetail');
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}', 'DetailController@showDetail');
@@ -61,6 +62,7 @@ Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{m
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailsId}/awards', 'AwardController@saveAward');
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}', 'AwardController@showAward');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}', 'AwardController@updateAward');
+Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}/bank', 'AwardController@updateAwardBank');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/awards/{awardId}/delete', 'AwardController@deleteAward');
 Route::post('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/details/{detailId}/award/insert', 'AwardController@insertAward');
 
@@ -73,5 +75,12 @@ Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mo
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/estimateReport', 'ReportController@showEstimate');
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/draftAward', 'ReportController@showDraftAward');
 Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/finalAward', 'ReportController@showFinalAward');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/disputedAward', 'ReportController@showDisputedAward');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/handoverReport', 'ReportController@showHandover');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/apr', 'ReportController@showApr');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/advApr', 'ReportController@showAdvApr');
+Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mouzaId}/lots/{lotId}/villages/{villageId}/draftfwd', 'ReportController@draftfwd');
 
 Route::get('/{number}/words','ReportController@convert_number_to_words');
+Route::get('/banks','BankController@listBanks');
+Route::get('/banks/{id}/branches','BankController@showBranches');

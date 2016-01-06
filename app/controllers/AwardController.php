@@ -14,8 +14,9 @@ class AwardController extends BaseController {
 		$village	= Village::find($villageId);
 		$detail		= Detail::find($detailId);		
 		$award		= Award::find($awardId);
+		$banks		= Bank::all();
 		$posessors	= $award->posessors;
-		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null));
+		return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>null,'banks'=>$banks));
 		//return $subdivs->toArray();
 	}
 	
@@ -89,6 +90,7 @@ class AwardController extends BaseController {
 		$award->solatium	= $award->total;
 		$award->additional_market_value = .12*$value_wo_baad;
 		$award->grand_total	= $award->total+$award->solatium+$award->additional_market_value;
+		$award->advance_land_value_paid = 2*$award->factored_value+.12*$award->land_value;
 		if($award->grand_total<=500000)
 		{
 			$award->establishment 	= .18*$award->grand_total;
@@ -136,13 +138,31 @@ class AwardController extends BaseController {
 		else
 		{
 			$messages = $validator->messages();
+			$banks		= Bank::all();
 			$posessors	= $award->posessors;
-			return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>$messages));
+			return View::make('award',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'posessors'=>$posessors,'award'=>$award,'messages'=>$messages,'banks'=>$banks));
 		
 		}
 		
 	}
-	
+	public function updateAwardBank($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$detail		= Detail::find($detailId);		
+		$award		= Award::find($awardId);
+		$award->branch_id 	= Input::get('branch');
+		$award->acc_no		= Input::get('accno');
+		$award->acc_holder	= Input::get('holder');
+		$award->save();
+		$pattadars			= $detail->pattadars;
+		$awards				= $detail->awards;		
+		return View::make('detail',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'detail'=>$detail,'awards'=>$awards,'pattadars'=>$pattadars));		
+	}
 	
 	public function deleteAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId,$detailId,$awardId)
 	{

@@ -17,12 +17,18 @@ class Award extends Eloquent {
     {
         return $this->belongsTo('Detail');
     }
-	
+	public function branch()
+    {
+        return $this->belongsTo('Branch');
+    }
 	public function posessors()
 	{
 		return $this->hasMany('Posessor');
 	}
-	
+	public function accHolder()
+    {
+        return $this->belongsTo('Posessor','acc_holder');
+    }
 	public static function boot()
     {
         parent::boot();

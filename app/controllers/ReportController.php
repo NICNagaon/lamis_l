@@ -36,6 +36,61 @@ class ReportController extends BaseController {
 		$scheme		= Property::find(1)->scheme;
 		return View::make('final',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
 	}
+	public function showDisputedAward($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$scheme		= Property::find(1)->scheme;
+		return View::make('disputed',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
+	}
+	public function showHandover($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$scheme		= Property::find(1)->scheme;
+		return View::make('handover',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
+	}
+	public function showApr($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$scheme		= Property::find(1)->scheme;
+		return View::make('apr',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
+	}
+	public function showAdvApr($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$scheme		= Property::find(1)->scheme;
+		return View::make('adv_apr',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
+	}
+	public function draftfwd($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
+	{
+		$district 	= District::find($distId);
+		$subdiv 	= Subdiv::find($subdivId);
+		$circle		= Circle::find($circleId);
+		$mouza		= Mouza::find($mouzaId);
+		$lot		= Lot::find($lotId);
+		$village	= Village::find($villageId);
+		$scheme		= Property::find(1)->scheme;
+		return View::make('draftfwd',array('district'=>$district,'subdiv'=>$subdiv,'circle'=>$circle,'mouza'=>$mouza,'lot'=>$lot,'village'=>$village,'scheme'=>$scheme));
+	}
 	public function showEstimate($distId,$subdivId,$circleId,$mouzaId,$lotId,$villageId)
 	{
 		$district 	= District::find($distId);
@@ -75,10 +130,10 @@ class ReportController extends BaseController {
 			foreach($detail->awards as $award)
 			{
 				$landClass[$award->land_class]['area']['l'] = $landClass[$award->land_class]['area']['l'] + $award->lecha;
-				if($landClass[$award->land_class]['area']['l']>=20)
+				while($landClass[$award->land_class]['area']['l']>=20)
 				{
-					$landClass[$award->land_class]['area']['k'] = $landClass[$award->land_class]['area']['k']+floor($landClass[$award->land_class]['area']['l']/20);
-					$landClass[$award->land_class]['area']['l'] = $landClass[$award->land_class]['area']['l']%20;
+					$landClass[$award->land_class]['area']['k'] = $landClass[$award->land_class]['area']['k']+1;
+					$landClass[$award->land_class]['area']['l'] = $landClass[$award->land_class]['area']['l']-20;
 				}
 				$landClass[$award->land_class]['area']['k'] = $landClass[$award->land_class]['area']['k'] + $award->katha;
 				if($landClass[$award->land_class]['area']['k']>=5)
@@ -180,9 +235,13 @@ class ReportController extends BaseController {
 			$rateC	= 1;
 		}
 		
-		
-
-
+		$village->dc_revenue_amt 	= round($rev,2,PHP_ROUND_HALF_UP);
+		$village->dc_est_amt		= $est;
+		$village->dc_est_rate		= $rateE;
+		$village->dc_cont_amt		= $cont;
+		$village->dc_cont_rate		= $rateC;
+		$village->dc_baad_amt		= $baad;
+		$village->save();
 		return View::make('estimate',array(	'district'=>$district,
 											'subdiv'=>$subdiv,
 											'circle'=>$circle,
@@ -202,7 +261,7 @@ class ReportController extends BaseController {
 											'solatium'=>$solatium,
 											'compensation'=>$compensation,
 											'grandTotal'=>round($grandTotal,0,PHP_ROUND_HALF_UP),
-											'rev'=>round($rev,0,PHP_ROUND_HALF_UP),
+											'rev'=>round($rev,2,PHP_ROUND_HALF_UP),
 											'est'=>round($est,0,PHP_ROUND_HALF_UP),
 											'cont'=>round($cont,0,PHP_ROUND_HALF_UP),
 											'rateE'=>$rateE,
@@ -214,45 +273,45 @@ class ReportController extends BaseController {
 	
 	public function convert_number_to_words($number) {
 
-		$no = round($number);
-   $point = round($number - $no, 2) * 100;
-   $hundred = null;
-   $digits_1 = strlen($no);
-   $i = 0;
-   $str = array();
-   $words = array('0' => '', '1' => 'One', '2' => 'Two',
-    '3' => 'Three', '4' => 'Four', '5' => 'Five', '6' => 'Six',
-    '7' => 'Seven', '8' => 'Eight', '9' => 'Nine',
-    '10' => 'Ten', '11' => 'Eleven', '12' => 'Twelve',
-    '13' => 'Thirteen', '14' => 'Fourteen',
-    '15' => 'Fifteen', '16' => 'Sixteen', '17' => 'Seventeen',
-    '18' => 'Eighteen', '19' =>'Nineteen', '20' => 'Twenty',
-    '30' => 'Thirty', '40' => 'Forty', '50' => 'Fifty',
-    '60' => 'Sixty', '70' => 'Seventy',
-    '80' => 'Eighty', '90' => 'Ninety');
-   $digits = array('', 'Hundred', 'Thousand', 'Lakh', 'Crore');
-   while ($i < $digits_1) {
-     $divider = ($i == 2) ? 10 : 100;
-     $number = floor($no % $divider);
-     $no = floor($no / $divider);
-     $i += ($divider == 10) ? 1 : 2;
-     if ($number) {
-        $plural = (($counter = count($str)) && $number > 9) ? 's' : null;
-        $hundred = ($counter == 1 && $str[0]) ? ' and ' : null;
-        $str [] = ($number < 21) ? $words[$number] .
-            " " . $digits[$counter] . $plural . " " . $hundred
-            :
-            $words[floor($number / 10) * 10]
-            . " " . $words[$number % 10] . " "
-            . $digits[$counter] . $plural . " " . $hundred;
-     } else $str[] = null;
-  }
-  $str = array_reverse($str);
-  $result = implode('', $str);
-  $points = ($point) ?
-    "." . $words[$point / 10] . " " . 
-          $words[$point = $point % 10] : '';
-  return array('rupees'=>$result, 'paise'=>$points );
+		   $no = floor($number);
+		   $point = round($number - $no, 2) * 100;
+		   $hundred = null;
+		   $digits_1 = strlen($no);
+		   $i = 0;
+		   $str = array();
+		   $words = array('0' => '', '1' => 'One', '2' => 'Two',
+			'3' => 'Three', '4' => 'Four', '5' => 'Five', '6' => 'Six',
+			'7' => 'Seven', '8' => 'Eight', '9' => 'Nine',
+			'10' => 'Ten', '11' => 'Eleven', '12' => 'Twelve',
+			'13' => 'Thirteen', '14' => 'Fourteen',
+			'15' => 'Fifteen', '16' => 'Sixteen', '17' => 'Seventeen',
+			'18' => 'Eighteen', '19' =>'Nineteen', '20' => 'Twenty',
+			'30' => 'Thirty', '40' => 'Forty', '50' => 'Fifty',
+			'60' => 'Sixty', '70' => 'Seventy',
+			'80' => 'Eighty', '90' => 'Ninety');
+		   $digits = array('', 'Hundred', 'Thousand', 'Lakh', 'Crore');
+		   while ($i < $digits_1) {
+			 $divider = ($i == 2) ? 10 : 100;
+			 $number = floor($no % $divider);
+			 $no = floor($no / $divider);
+			 $i += ($divider == 10) ? 1 : 2;
+			 if ($number) {
+				$plural = (($counter = count($str)) && $number > 9) ? 's' : null;
+				$hundred = ($counter == 1 && $str[0]) ? ' and ' : null;
+				$str [] = ($number < 21) ? $words[$number] .
+					" " . $digits[$counter] . $plural . " " . $hundred
+					:
+					$words[floor($number / 10) * 10]
+					. " " . $words[$number % 10] . " "
+					. $digits[$counter] . $plural . " " . $hundred;
+			 } else $str[] = null;
+		  }
+		  $str = array_reverse($str);
+		  $result = implode('', $str);
+		  $points = ($point) ?
+			$words[$point / 10] . " " . 
+				  $words[$point = $point % 10] : '';
+		  return array('rupees'=>$result, 'paise'=>$points );
 
 		return $string;
 	}

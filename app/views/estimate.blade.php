@@ -232,13 +232,18 @@
 			<p class=MsoNormal><em><span style='font-family:"Calibri","sans-serif"'>&nbsp;</span></em></p>
 
 			<p style='margin:0cm;margin-bottom:.0001pt'>The General Manager (Project)<br>
-			NHIDCL,House No 1,</p>
+			National Highways and Infrastructure Development Corporation Ltd.(NHIDCL),</p>
 
-			<p style='margin:0cm;margin-bottom:.0001pt'>Panipath,P.I.U.</p>
+			<p style='margin:0cm;margin-bottom:.0001pt'>(Ministry of Road Transport and Highways)</p>
+			
+			<p style='margin:0cm;margin-bottom:.0001pt'>Bhagwatis's Complex</p>
+			
+			<p style='margin:0cm;margin-bottom:.0001pt'>House No 78, 2nd Floor, Jayanagar</p>
+			
 
-			<p style='margin:0cm;margin-bottom:.0001pt'>Ambikagiri Nagar, Zoo Road,</p>
+			<p style='margin:0cm;margin-bottom:.0001pt'>Jawahar Nagar Road, Khanapara</p>
 
-			<p style='margin:0cm;margin-bottom:.0001pt'>Guwahati-24.</p>
+			<p style='margin:0cm;margin-bottom:.0001pt'>Guwahati-22.</p>
 
 			<p style='margin:0cm;margin-bottom:.0001pt'>Assam</p>
 
@@ -324,7 +329,7 @@
 			Department,Dispur (Enclosed Jamabandi one copy, Chitha one copy, Estimate one
 			copy,Details statement one copy for information and kind necessary action.)</li>
 
-			<li>The Commissioner, North Assam Division, Tezpur for information and kind
+			<li>The Divisional Commissioner, Central Division, Assam for information and kind
 			necessary action. </li>
 
 			<li>Director of Land Acquisition of Govt. of Assam, Guwahati for information.</li>
