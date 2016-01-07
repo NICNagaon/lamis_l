@@ -47,7 +47,11 @@
           <a class="navbar-brand" href="#">Land Aquisition</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">Home</a></li>
+				<li><a href="/banks/show">Banks</a></li>
+				
+			</ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>

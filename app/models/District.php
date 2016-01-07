@@ -17,5 +17,8 @@ class District extends Eloquent {
     {
         return $this->hasMany('Subdiv');
     }
-
+	public function branch()
+    {
+        return $this->belongsTo('Branch','dc_branch_id');
+    }
 }

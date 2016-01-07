@@ -83,4 +83,10 @@ Route::get('/districts/{distId}/subdivs/{subdivId}/circles/{circleId}/mouzas/{mo
 
 Route::get('/{number}/words','ReportController@convert_number_to_words');
 Route::get('/banks','BankController@listBanks');
-Route::get('/banks/{id}/branches','BankController@showBranches');
+Route::post('/banks','BankController@saveBank');
+Route::get('/banks/show','BankController@showBanks');
+Route::get('/banks/{id}','BankController@showBranches');
+
+Route::get('/banks/{id}/branches','BankController@listBranches');
+Route::get('/banks/{bankId}/branches/{id}','BankController@showBranchDetail');
+Route::post('/banks/{id}/branches','BankController@saveBranch');

@@ -36,7 +36,7 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th colspan="22">
+					<th colspan="23">
 						Details Report of Land Aquisition under {{{$scheme}}}<br/>
 						in District: {{{$district->name}}}  Sub-Division: {{{$subdiv->name}}} Revenue Circle: {{{$circle->name}}} Mouza: {{{$mouza->name}}} Village:{{{$village->name}}}<br/>
 						with L.A. Case No. {{{$village->la_case}}}<br/>
@@ -51,7 +51,7 @@
 					<th rowspan="2">Dag No.</th>
 					<th rowspan="2">Patta No.</th>
 					<th rowspan="2">Class of Land</th>
-					<th colspan="3">Area</th>					
+					<th colspan="4">Area</th>					
 					<th rowspan="2">Rate per Bigha</th>										
 					<th rowspan="2">Land value in Rs.</th>
 					<th rowspan="2">Premium Baad in Rs.</th>
@@ -69,6 +69,7 @@
 					<th>B</th>
 					<th>K</th>
 					<th>L</th>
+					<th>Hector</th>
 				</tr>
 				<tr>
 					<th>1</th>
@@ -93,6 +94,7 @@
 					<th>20</th>
 					<th>21</th>
 					<th>22</th>
+					<th>23</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -141,7 +143,9 @@
 							<td style="text-align:right;"></td>
 							<td style="text-align:right;">{{{$bigha}}}</td>
 							<td style="text-align:right;">{{{$katha}}}</td>
-							<td style="text-align:right;">{{{round($lecha,2,PHP_ROUND_HALF_UP)}}}</td>						
+							<td style="text-align:right;">{{{round($lecha,2,PHP_ROUND_HALF_UP)}}}</td>
+							{{--*/$hectare = 0.0013379716*(100*$bigha+20*$katha+round($lecha,2,PHP_ROUND_HALF_UP));/*--}}
+							<td style="text-align:right;">{{{$hectare}}}</td>
 							<td style="text-align:right;"></td>												
 							<td style="text-align:right;">{{{round($land_value,2,PHP_ROUND_HALF_UP)}}}</td>
 							<td style="text-align:right;">{{{round($baad,2,PHP_ROUND_HALF_UP)}}}</td>
@@ -223,6 +227,8 @@
 							}
 							$bighaT = $bighaT+$award->bigha;
 							/*--}}
+						{{--*/$hectare1 = 0.0013379716*(100*$award->bigha+20*$award->katha+round($award->lecha,2,PHP_ROUND_HALF_UP));/*--}}
+						<td style="text-align:right;">{{{$hectare1}}}</td>
 						<td style="text-align:right;">{{{$award->rate}}}</td>												
 						<td style="text-align:right;">{{{$award->land_value}}}</td>
 							{{--*/
@@ -288,7 +294,9 @@
 					<td style="text-align:right;"></td>
 					<td style="text-align:right;">{{{$bigha}}}</td>
 					<td style="text-align:right;">{{{$katha}}}</td>
-					<td style="text-align:right;">{{{round($lecha,2,PHP_ROUND_HALF_UP)}}}</td>						
+					<td style="text-align:right;">{{{round($lecha,2,PHP_ROUND_HALF_UP)}}}</td>	
+					{{--*/$hectare = 0.0013379716*(100*$bigha+20*$katha+round($lecha,2,PHP_ROUND_HALF_UP));/*--}}
+					<td style="text-align:right;">{{{$hectare}}}</td>
 					<td style="text-align:right;"></td>												
 					<td style="text-align:right;">{{{round($land_value,2,PHP_ROUND_HALF_UP)}}}</td>
 					<td style="text-align:right;">{{{round($baad,2,PHP_ROUND_HALF_UP)}}}</td>
@@ -309,7 +317,9 @@
 					<td style="text-align:right;"></td>
 					<td style="text-align:right;">{{{$bighaT}}}</td>
 					<td style="text-align:right;">{{{$kathaT}}}</td>
-					<td style="text-align:right;">{{{round($lechaT,2,PHP_ROUND_HALF_UP)}}}</td>						
+					<td style="text-align:right;">{{{round($lechaT,2,PHP_ROUND_HALF_UP)}}}</td>	
+					{{--*/$hectareT = 0.0013379716*(100*$bighaT+20*$kathaT+round($lechaT,2,PHP_ROUND_HALF_UP));/*--}}
+					<td style="text-align:right;">{{{$hectareT}}}</td>
 					<td style="text-align:right;"></td>												
 					<td style="text-align:right;">{{{round($land_valueT,2,PHP_ROUND_HALF_UP)}}}</td>
 					<td style="text-align:right;">{{{round($baadT,2,PHP_ROUND_HALF_UP)}}}</td>
